@@ -1,37 +1,39 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/Layout';
 import utilStyles from '../styles/utils.module.css';
-// import { getSortedPostsData } from '../lib/posts'; => CSR 방식에서는 사용하지 못함.
-import { useEffect, useState } from 'react';
+import { getSortedPostsData } from '../lib/posts'; // => CSR 방식에서는 사용하지 못함.
+// import { useEffect, useState } from 'react'; // => CSR 방식
 import Link from 'next/link';
 import Date from '../components/date';
 
 // SSG로 렌더링하기
-// export async function getStaticProps() {
-//   console.log('SSG');
-//   // build 전: SSR처럼 동작하기 때문에 서버(터미널)에서 출력된다.
-//   // build 후: 정적사이트이기 때문에 출력되지 않는다.
-//   const allPostsData = getSortedPostsData();
-//   return {
-//     props: {
-//       allPostsData,
-//     },
-//   };
-// }
-
-// SSG로 렌더링 + 만들어둔 api 호출해서 사용
 export async function getStaticProps() {
-  const response = await fetch('http://localhost:3000/api/posts');
-  // getStaticProps 에서 fetch를 쓸 때는 상대경로 주소가 아닌 절대경로 주소로 써야 한다.
-  // => 'api/posts'가 아닌 'http://localhost:3000' 사용
-  const json = await response.json();
-
+  console.log('SSG');
+  // build 전: SSR처럼 동작하기 때문에 서버(터미널)에서 출력된다.
+  // build 후: 정적사이트이기 때문에 출력되지 않는다.
+  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData: json.allPostsData,
+      allPostsData,
     },
   };
 }
+
+// SSG로 렌더링 + 만들어둔 api 호출해서 사용
+// export async function getStaticProps() {
+//   const response = await fetch('http://localhost:3000/api/posts');
+//   // getStaticProps 에서는 상대경로 주소가 아닌 절대경로 주소로 써야 한다.
+//   // => 'api/posts'가 아닌 'http://localhost:3000' 사용
+//   // Data Fetching을 위한 예시일뿐. 서버사이드에서는 API Routes를 쓰지 않는다.
+//   // API Routes는 클라이언트 사이드에서 서버사이드로 요청을 보내기 위함.
+//   const json = await response.json();
+
+//   return {
+//     props: {
+//       allPostsData: json.allPostsData,
+//     },
+//   };
+// }
 
 // SSR로 렌더링하기
 // export async function getServerSideProps() {
