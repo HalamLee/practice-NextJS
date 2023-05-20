@@ -18,6 +18,14 @@ export default function Layout({ children, home }) {
     }
   }, []);
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.querySelector('body').classList.add('dark');
+    } else {
+      document.querySelector('body').classList.remove('dark');
+    }
+  }, [theme]);
+
   const handleClick = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     localStorage.setItem('theme', newTheme);
@@ -25,8 +33,8 @@ export default function Layout({ children, home }) {
   };
 
   return (
-    // <div className="h-screen text-gray-800 bg-green-100 dark:bg-black dark:text-gray-200">
-    <div className="h-screen text-gray-800 bg-green-100 dark:text-gray-200">
+    <div className="h-screen text-gray-800 bg-green-100 dark:bg-black dark:text-gray-200">
+      {/* <div className="h-screen text-gray-800 bg-green-100 dark:text-gray-200"> */}
       <div className={styles.container}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
