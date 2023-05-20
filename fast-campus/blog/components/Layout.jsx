@@ -45,9 +45,9 @@ export default function Layout({ children, home }) {
         </Head>
         <button className="px-2" onClick={handleClick}>
           {theme === 'dark' ? (
-            <Image width={20} height={20} src={'/light-mode.svg'} alt="light" />
+            <Image width={30} height={30} src={'/light-mode.svg'} alt="light" />
           ) : (
-            <Image width={20} height={20} src={'/dark-mode.svg'} alt="dark" />
+            <Image width={30} height={30} src={'/dark-mode.svg'} alt="dark" />
           )}
         </button>
         <header className={styles.header}>
