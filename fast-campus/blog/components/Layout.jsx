@@ -45,13 +45,7 @@ export default function Layout({ children, home }) {
         </Head>
         <button className="px-2" onClick={handleClick}>
           {theme === 'dark' ? (
-            <Image
-              className="text-yellow-200"
-              width={20}
-              height={20}
-              src={'/light-mode.svg'}
-              alt="light"
-            />
+            <Image width={20} height={20} src={'/light-mode.svg'} alt="light" />
           ) : (
             <Image width={20} height={20} src={'/dark-mode.svg'} alt="dark" />
           )}
