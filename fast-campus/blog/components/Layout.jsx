@@ -33,7 +33,7 @@ export default function Layout({ children, home }) {
   };
 
   return (
-    <div className="h-screen text-gray-800 bg-green-100 dark:bg-black dark:text-gray-200">
+    <div className="text-gray-800 bg-green-100 h-fit dark:bg-black dark:text-gray-200">
       {/* <div className="h-screen text-gray-800 bg-green-100 dark:text-gray-200"> */}
       <div className={styles.container}>
         <Head>
