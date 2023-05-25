@@ -1,4 +1,4 @@
-## http:localhost:3000/image
+## http://localhost:3000/image
 
 #### Used Library : [nuka-carousel](https://github.com/FormidableLabs/nuka-carousel)
 
